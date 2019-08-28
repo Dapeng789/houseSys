@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="sys.qx.dao.C15TableBeanDaoMapper" >
+
+	
+	<resultMap  id="c15TableBean"  type="sys.qx.model.C15TableBean">
+	
+			<result column="xuhao" property="xuhao" jdbcType="VARCHAR" />
+			
+			<result column="quyu" property="quyu" jdbcType="VARCHAR" />
+			
+			<result column="shengfen" property="shengfen" jdbcType="VARCHAR" />
+			
+			<result column="objectName" property="objectName" jdbcType="VARCHAR" />
+			
+			<result column="fangjiandaima" property="fangjiandaima" jdbcType="VARCHAR" />
+			
+			<result column="addressUrl" property="addressUrl" jdbcType="VARCHAR" />
+			
+			<result column="zongjia" property="zongjia" jdbcType="VARCHAR" />
+			
+			<result column="yingqianyueriqi" property="yingqianyueriqi" jdbcType="VARCHAR" />
+			
+			<result column="qianyueriqi" property="qianyueriqi" jdbcType="VARCHAR" />
+			
+			<result column="fukuanfangshi" property="fukuanfangshi" jdbcType="VARCHAR" />
+			
+			<result column="anjieyinhang" property="anjieyinhang" jdbcType="VARCHAR" />
+			
+			<result column="yinhangfenlei" property="yinhangfenlei" jdbcType="VARCHAR" />
+			
+			<result column="yinhangxifen" property="yinhangxifen" jdbcType="VARCHAR" />
+			
+			<result column="caoqianriqi" property="caoqianriqi" jdbcType="VARCHAR" />
+			
+			<result column="zhengshiqianyueriqi" property="zhengshiqianyueriqi" jdbcType="VARCHAR" />
+			
+			<result column="anjiejine" property="anjiejine" jdbcType="VARCHAR" />
+			
+			<result column="fangkanriqi" property="fangkanriqi" jdbcType="VARCHAR" />
+			
+			<result column="kehumingcheng" property="kehumingcheng" jdbcType="VARCHAR" />
+			
+			<result column="yewuyuan" property="yewuyuan" jdbcType="VARCHAR" />
+			
+			<result column="dainajinjine" property="dainajinjine" jdbcType="VARCHAR" />
+			
+			<result column="anjieleixing" property="anjieleixing" jdbcType="VARCHAR" />
+			
+			<result column="fangkuanjine" property="fangkuanjine" jdbcType="VARCHAR" />
+			
+			<result column="gongjijinjine" property="gongjijinjine" jdbcType="VARCHAR" />
+			
+			<result column="lurudate" property="lurudate" jdbcType="VARCHAR" />
+	   		
+	   		<!-- 标识  -->
+	   		<result column="authority" property="authority" jdbcType="INTEGER" />
+	</resultMap>
+
+
+
+	<!--批量增加-->
+	<insert id="saveC15TableExcelData" parameterType="list">
+	    insert into c15table(
+	    	 xuhao,
+			 quyu,
+			 shengfen,
+			 objectName,
+			 fangjiandaima,
+			 addressUrl,
+			 zongjia,
+			 yingqianyueriqi,
+			 qianyueriqi,
+			 fukuanfangshi,
+			 anjieyinhang,
+			 yinhangfenlei,
+			 yinhangxifen,
+			 caoqianriqi,
+			 zhengshiqianyueriqi,
+			 anjiejine,
+			 fangkanriqi,
+			 kehumingcheng,
+			 yewuyuan,
+			 dainajinjine,
+			 anjieleixing,
+			 fangkuanjine,
+			 gongjijinjine,
+			 lurudate,
+			 authority   
+			 )
+	     values 
+	    <foreach collection="list" item="item" separator=",">
+	        (  
+	         #{item.xuhao},
+			 #{item.quyu},
+			 #{item.shengfen},
+			 #{item.objectName},
+			 #{item.fangjiandaima},
+			 #{item.addressUrl},
+			 #{item.zongjia},
+			 #{item.yingqianyueriqi},
+		   	 #{item.qianyueriqi},
+			 #{item.fukuanfangshi},
+			 #{item.anjieyinhang},
+			 #{item.yinhangfenlei},
+			 #{item.yinhangxifen},
+			 #{item.caoqianriqi},
+			 #{item.zhengshiqianyueriqi},
+			 #{item.anjiejine},
+			 #{item.fangkanriqi},
+			 #{item.kehumingcheng},
+			 #{item.yewuyuan},
+			 #{item.dainajinjine},
+			 #{item.anjieleixing},
+			 #{item.fangkuanjine},
+			 #{item.gongjijinjine},
+			 #{item.lurudate},
+			 #{item.authority}    
+			 )
+	    </foreach>
+	</insert>
+	
+	
+	
+	
+	<select id="getC15TableExcelData"   resultMap = "c15TableBean">
+		select * from  c15table;
+	</select>
+	
+	
+	<select id="ifFangjianBianHao"   parameterType="java.lang.String"   resultMap="c15TableBean">
+		select * from  c15table where fangjiandaima = #{bianhao};
+	</select>
+	
+	
+	<select id="getZongjine"   resultType = "java.lang.Long">
+		select sum(fangkuanjine)  from  c15table;
+	</select>
+	
+	<!-- 清空C15表中的所有数据 -->
+	<delete id="qingKongC15" parameterType="int" >
+		delete from  c15table where authority=#{id};
+	</delete>
+	
+	<!-- 将已还款部分表清空 -->
+	<update id="qingkongHuanKuan">  
+     truncate table hksuoyou;
+	</update>
+	
+	
+	<!-- 将已还款表清空 -->
+	<update id="qingKongBufuHuanKuan">  
+     truncate table hkbufen;
+	</update>
+	
+	
+	
+	 <!--根据 房间代码 删除指定的用户 -->
+       <delete id="deletefjbhUser" parameterType="sys.qx.model.C03TableUser" >
+        	delete from c15table  where fangjiandaima=#{theRoomNumber} and authority=#{authority};
+      </delete> 
+      
+      
+      
+	<delete id="deleteBSUser" parameterType="java.lang.Integer">
+        	delete from c15table  where authority = #{biaoShi};
+      </delete>
+	
+	
+	
+</mapper>

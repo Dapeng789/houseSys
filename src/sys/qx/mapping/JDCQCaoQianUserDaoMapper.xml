@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sys.qx.dao.JDCQCaoQianUserDaoMapper" >
+
+
+	<resultMap  id="jDCQCaoQianUser"  type="sys.qx.model.JDCQCaoQianUser"> 
+	
+			<id property="id" column="id"/>
+	   		<!-- 所属区域   -->
+			<result column="area" property="area" jdbcType="VARCHAR" />
+			<!-- 区域总裁 -->
+			<result column="areaPresident" property="areaPresident" jdbcType="VARCHAR" />
+		  	<!-- 楼盘 -->
+			<result column="building" property="building" jdbcType="VARCHAR" />
+			<!-- 付款方式 -->
+			<result column="paymentMethod" property="paymentMethod" jdbcType="VARCHAR" />
+			<!-- 房间编号 -->
+			<result column="theRoomNumber" property="theRoomNumber" jdbcType="VARCHAR" />
+			<!-- 苑区	 -->
+			<result column="park" property="park" jdbcType="VARCHAR" />
+			<!-- 路址  -->
+			<result column="url" property="url" jdbcType="VARCHAR" />
+			<!-- 业主名称 -->
+			<result column="ownerName" property="ownerName" jdbcType="VARCHAR" />
+			<!-- 认购价 -->
+			<result column="subscriptionPrice" property="subscriptionPrice" jdbcType="VARCHAR" />
+			<!-- 应交款项 -->
+			<result column="fund" property="fund" jdbcType="VARCHAR" />
+			<!-- 推售日期 -->
+			<result column="sellingDate" property="sellingDate" jdbcType="VARCHAR" />
+			<!-- 预售证日期 -->
+			<result column="prePinDate" property="prePinDate" jdbcType="VARCHAR" />
+			<!-- 竣工备案日期 -->
+			<result column="closeoutDate" property="closeoutDate" jdbcType="VARCHAR" />
+			<!-- 应交日期   -->
+			<result column="deliveryDate" property="deliveryDate" jdbcType="VARCHAR" />
+			<!-- 到期应交金额  --> 
+			<result column="deliveryOughtToMathod" property="deliveryOughtToMathod" jdbcType="VARCHAR" />
+			<!-- 到期已交金额   -->
+			<result column="deliveryYetMathod" property="deliveryYetMathod" jdbcType="VARCHAR" />
+			<!-- 到期欠交金额   -->
+			<result column="deliveryDebtMathod" property="deliveryDebtMathod" jdbcType="DOUBLE" />
+			<!-- 未到期应交金额 -->  
+			<result column="noDeliveryOughtToMathod" property="noDeliveryOughtToMathod" jdbcType="VARCHAR" />
+			<!-- 未到期已交金额   -->
+			<result column="noDeliveryYetMathod" property="noDeliveryYetMathod" jdbcType="VARCHAR" />
+			<!-- 未到期欠交金额   -->
+			<result column="noDeliveryDebtMathod" property="noDeliveryDebtMathod" jdbcType="DOUBLE" />
+			<!-- 认购日期   -->
+			<result column="subscribeDate" property="subscribeDate" jdbcType="VARCHAR" />
+			<!-- 签约日期   -->
+			<result column="signedDate" property="signedDate" jdbcType="VARCHAR" />
+			<!-- 按揭银行   -->
+			<result column="bank" property="bank" jdbcType="VARCHAR" />
+			<!-- 房间类型   -->
+			<result column="roomType" property="roomType" jdbcType="VARCHAR" />
+			<!-- 合同收楼日期   -->
+			<result column="repossessionDate" property="repossessionDate" jdbcType="VARCHAR" />
+			<!-- 收楼通知书日期   -->
+			<result column="informDate" property="informDate" jdbcType="VARCHAR" />
+			<!-- 装修情况   -->
+			<result column="decoration" property="decoration" jdbcType="VARCHAR" />
+			<!-- 跟办人   -->
+			<result column="assistParent" property="assistParent" jdbcType="VARCHAR" />
+			<!-- 客户联系电话   -->
+			<result column="clientPhone" property="clientPhone" jdbcType="VARCHAR" />
+			<!-- 公积金   -->
+			<result column="reservedFunds" property="reservedFunds" jdbcType="VARCHAR" />
+			<!-- 合同路址   -->
+			<result column="contractaddress" property="contractaddress" jdbcType="VARCHAR" />
+			<!-- 已交金额   -->
+			<result column="paidMathod" property="paidMathod" jdbcType="VARCHAR" />
+			<!-- 已交日期   -->
+			<result column="yjDate" property="yjDate" jdbcType="VARCHAR" />
+			<!-- 结算价   -->
+			<result column="callPrice" property="callPrice" jdbcType="VARCHAR" />
+			<!-- 到期0-30天欠交   -->
+			<result column="under30" property="under30" jdbcType="VARCHAR" />
+			<!-- 到期31-90天欠交   -->
+			<result column="under30To90" property="under30To90" jdbcType="VARCHAR" />
+			<!-- 到期91-180天欠交   -->
+			<result column="under91To180" property="under91To180" jdbcType="VARCHAR" />
+			<!-- 到期181 270天欠交  -->
+			<result column="under181To270" property="under181To270" jdbcType="VARCHAR" />
+			<!-- 到期271 360天欠交  -->
+			<result column="under271To360" property="under271To360" jdbcType="VARCHAR" />
+			<!-- 到期361天以上欠交  -->
+			<result column="under361Up" property="under361Up" jdbcType="VARCHAR" />
+			<!-- 预售建筑面积   -->
+			<result column="prePinArea" property="prePinArea" jdbcType="VARCHAR" />
+			<!-- 实测建筑面积   -->
+			<result column="realityArea" property="realityArea" jdbcType="VARCHAR" />
+			<!-- 合同建筑面积   -->
+			<result column="contractArea" property="contractArea" jdbcType="VARCHAR" />
+			<!-- 客户联系地址   -->
+			<result column="clientAddress" property="clientAddress" jdbcType="VARCHAR" />
+			<!-- 预计竣工日期   -->
+			<result column="finishDate" property="finishDate" jdbcType="VARCHAR" />
+			<!-- 草签日期   -->
+			<result column="cqDate" property="cqDate" jdbcType="VARCHAR" />
+			<!-- 欠款原因   -->
+			<result column="debtCause" property="debtCause" jdbcType="VARCHAR" />
+			<!-- 是否低首付   -->
+			<result column="lowPayment" property="lowPayment" jdbcType="VARCHAR" />
+			<!-- 低首付类型   -->
+			<result column="lowPaymentType" property="lowPaymentType" jdbcType="VARCHAR" />
+			<!-- 低首付金额   -->
+			<result column="lowPaymentMathod" property="lowPaymentMathod" jdbcType="VARCHAR" />
+			<!-- 签约状态   -->
+			<result column="signedStart" property="signedStart" jdbcType="VARCHAR" />
+			<!--利润中心   -->
+			<result column="profitCentre" property="profitCentre" jdbcType="VARCHAR" />
+			<!-- 总钱数   -->
+			<result column="allzongqianshu" property="allzongqianshu" jdbcType="DOUBLE" />
+	   		<!-- 导入时间   -->
+	   		<result column="importdate" property="importdate" jdbcType="VARCHAR" />
+	   		<!-- 总金额   -->
+	   		<result column="moneyAll" property="moneyAll" jdbcType="DOUBLE" />
+	   		<!-- 标识  -->
+	   		<result column="authority" property="authority" jdbcType="INTEGER" />
+	</resultMap>
+	
+	
+	
+	
+		<!--批量增加-->
+	 <insert id="insertChaoQiUser" parameterType="list">
+		<if test='list != null and list.size() > 0'>
+			insert into `jdcqcaoqianuser`
+	    	(
+	    	area,
+			areaPresident,
+			building,
+			paymentMethod,
+			theRoomNumber,
+			park,
+			url,
+			ownerName,
+			subscriptionPrice,
+			fund,
+			sellingDate,
+			prePinDate,
+			closeoutDate,
+			deliveryDate,
+			deliveryOughtToMathod,
+			deliveryYetMathod,	
+			deliveryDebtMathod,
+			noDeliveryOughtToMathod,
+			noDeliveryYetMathod,
+			noDeliveryDebtMathod,
+			subscribeDate,
+			signedDate,
+			bank,
+			roomType,
+			repossessionDate,
+			informDate,
+			decoration,
+			assistParent,
+			clientPhone,
+			reservedFunds,
+			contractaddress,
+			paidMathod,
+			yjDate,
+			callPrice,
+			under30,
+			under30To90,
+			under91To180,
+			under181To270,
+			under271To360,
+			under361Up,
+			prePinArea,
+			realityArea,
+			contractArea,
+			clientAddress,
+			finishDate,
+			cqDate,
+			debtCause,
+			lowPayment,
+			lowPaymentType,
+			lowPaymentMathod,
+			signedStart,
+			profitCentre,
+			allzongqianshu,
+			importdate,
+			moneyAll
+			)
+	     values
+	    <foreach collection="list" item="item1" separator=",">
+	        ( 
+			#{item1.area}, 
+			#{item1.areaPresident},
+			#{item1.building},
+			#{item1.paymentMethod},
+			#{item1.theRoomNumber},
+			#{item1.park},
+			#{item1.url},
+			#{item1.ownerName},
+			#{item1.subscriptionPrice},
+			#{item1.fund},
+			#{item1.sellingDate},
+			#{item1.prePinDate},
+			#{item1.closeoutDate},
+			#{item1.deliveryDate},
+			#{item1.deliveryOughtToMathod},
+			#{item1.deliveryYetMathod},
+			#{item1.deliveryDebtMathod},
+			#{item1.noDeliveryOughtToMathod},
+			#{item1.noDeliveryYetMathod},
+			#{item1.noDeliveryDebtMathod},
+			#{item1.subscribeDate},
+			#{item1.signedDate},
+			#{item1.bank},
+			#{item1.roomType},
+			#{item1.repossessionDate},
+			#{item1.informDate},
+			#{item1.decoration},
+			#{item1.assistParent},
+			#{item1.clientPhone},
+			#{item1.reservedFunds},
+			#{item1.contractaddress},
+			#{item1.paidMathod},
+			#{item1.yjDate},
+			#{item1.callPrice},
+			#{item1.under30},
+			#{item1.under30To90},
+			#{item1.under91To180},
+			#{item1.under181To270},
+			#{item1.under271To360},
+			#{item1.under361Up},
+			#{item1.prePinArea},
+			#{item1.realityArea},
+			#{item1.contractArea},
+			#{item1.clientAddress},
+			#{item1.finishDate},
+			#{item1.cqDate},
+			#{item1.debtCause},
+			#{item1.lowPayment},
+			#{item1.lowPaymentType},
+			#{item1.lowPaymentMathod},
+			#{item1.signedStart},
+			#{item1.profitCentre},
+			#{item1.allzongqianshu},
+			#{item1.importdate},
+			#{item1.moneyAll} 
+	        )
+	    </foreach>
+		</if>
+	</insert> 
+	
+	
+	
+	
+	
+	
+	<!-- select *  from  c03table where fund='银行按揭'; -->
+	<select id="getAllUser"   parameterType="java.lang.Integer"   resultMap="jDCQCaoQianUser">
+		select *  from  jdcqcaoqianuser where authority = #{myid};
+	</select>
+	
+	
+	  <delete id="deleteBSUser" parameterType="java.lang.Integer">
+        	delete from jdcqcaoqianuser  where authority = #{biaoShi};
+      </delete>
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="sys.qx.dao.HKSuoYouDaoMapper" >
+
+	
+	<resultMap  id="hKSuoYou"  type="sys.qx.model.HKSuoYou">
+	
+			<result column="xuhao" property="xuhao" jdbcType="VARCHAR" />
+			
+			<result column="quyu" property="quyu" jdbcType="VARCHAR" />
+			
+			<result column="shengfen" property="shengfen" jdbcType="VARCHAR" />
+			
+			<result column="objectName" property="objectName" jdbcType="VARCHAR" />
+			
+			<result column="fangjiandaima" property="fangjiandaima" jdbcType="VARCHAR" />
+			
+			<result column="addressUrl" property="addressUrl" jdbcType="VARCHAR" />
+			
+			
+			<result column="zongjia" property="zongjia" jdbcType="VARCHAR" />
+			
+			<result column="yingqianyueriqi" property="yingqianyueriqi" jdbcType="VARCHAR" />
+			
+			<result column="qianyueriqi" property="qianyueriqi" jdbcType="VARCHAR" />
+			
+			<result column="fukuanfangshi" property="fukuanfangshi" jdbcType="VARCHAR" />
+			
+			
+			<result column="anjieyinhang" property="anjieyinhang" jdbcType="VARCHAR" />
+			
+			<result column="yinhangfenlei" property="yinhangfenlei" jdbcType="VARCHAR" />
+			
+			<result column="caoqianriqi" property="caoqianriqi" jdbcType="VARCHAR" />
+			
+			
+			<result column="zhengshiqianyueriqi" property="zhengshiqianyueriqi" jdbcType="VARCHAR" />
+			
+			<result column="anjiejine" property="anjiejine" jdbcType="VARCHAR" />
+			
+			
+			<result column="fangkanriqi" property="fangkanriqi" jdbcType="VARCHAR" />
+			
+			<result column="kehumingcheng" property="kehumingcheng" jdbcType="VARCHAR" />
+			
+			
+			<result column="yewuyuan" property="yewuyuan" jdbcType="VARCHAR" />
+			
+			
+			<result column="dainajinjine" property="dainajinjine" jdbcType="VARCHAR" />
+			
+			
+			<result column="anjieleixing" property="anjieleixing" jdbcType="VARCHAR" />
+			
+			<result column="fangkuanjine" property="fangkuanjine" jdbcType="VARCHAR" />
+			
+			
+			<result column="gongjijinjine" property="gongjijinjine" jdbcType="VARCHAR" />
+	   		<result column="lurudate" property="lurudate" jdbcType="VARCHAR" />
+	   		
+	   		<!-- 标识  -->
+	   		<result column="authority" property="authority" jdbcType="INTEGER" />
+	   		
+	</resultMap>
+	
+		<!--批量增加-->
+	<insert id="insertHkUser" parameterType="list">
+	    insert into `hksuoyou`
+	    	(
+	    	 xuhao,
+			quyu,
+			shengfen,
+			objectName,
+			fangjiandaima,
+			 addressUrl,
+			 zongjia,
+			 yingqianyueriqi,
+			qianyueriqi,
+			 fukuanfangshi,
+			anjieyinhang,
+			 yinhangfenlei,
+			caoqianriqi,
+			zhengshiqianyueriqi,
+			 anjiejine,
+			 fangkanriqi,
+			 kehumingcheng,
+			 yewuyuan,
+			 	dainajinjine,
+			 	anjieleixing,
+			 	fangkuanjine,
+			  gongjijinjine,
+			  lurudate,
+			  authority 
+			)
+	     values
+	    <foreach collection="list" item="item" separator=",">
+	        ( 
+	        #{item.xuhao},
+			#{item.quyu},
+			#{item.shengfen},
+			#{item.objectName},
+			#{item.fangjiandaima},
+			 #{item.addressUrl},
+			 #{item.zongjia},
+			 #{item.yingqianyueriqi},
+			#{item.qianyueriqi},
+			 #{item.fukuanfangshi},
+			#{item.anjieyinhang},
+			 #{item.yinhangfenlei},
+			#{item.caoqianriqi},
+			#{item.zhengshiqianyueriqi},
+			 #{item.anjiejine},
+			 #{item.fangkanriqi},
+			 #{item.kehumingcheng},
+			 #{item.yewuyuan},
+			 	#{item.dainajinjine},
+			 	#{item.anjieleixing},
+			 	#{item.fangkuanjine},
+			  #{item.gongjijinjine},
+			   #{item.lurudate},
+			   #{item.authority}
+			  )
+	    </foreach>
+	</insert>
+	
+	
+	 <!-- 查询All数据 -->
+	  <select id="getUserAllData" parameterType="sys.qx.model.UtilDate" resultMap = "hKSuoYou">
+		<!-- Select Distinct * from (Select * from hkbufen where lurudate>=#{srartDate} and authority=#{id}  Union Select * from hksuoyou where lurudate >=#{stropDate} and authority=#{id})  tab; -->
+		Select Distinct * from (Select * from hkbufen where lurudate&gt;=#{srartDate} and lurudate&lt;=#{stropDate} and authority=#{id}  Union Select * from hksuoyou where lurudate&gt;=#{srartDate} and lurudate&lt;=#{stropDate} and authority=#{id}) tab;
+	</select> 
+	
+	
+	<delete id="deleteBSUser" parameterType="java.lang.Integer">
+        	delete from hksuoyou  where authority = #{biaoShi};
+      </delete>
+
+	
+	
+</mapper>
